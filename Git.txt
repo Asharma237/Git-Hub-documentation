@@ -1628,6 +1628,43 @@ remote: Total 9 (delta 2), reused 9 (delta 2), pack-reused 0
 Unpacking objects: 100% (9/9), done.
 Checking connectivity... done.
 
+.........Do changes to the local document at master branch.........
+
+$ git push -u origin master
+Username for 'https://github.com': asharma237
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 851 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+To https://github.com/Asharma237/Git-Hub-documentation.git
+   9ec3d0d..b28daf2  master -> master
+Branch master set up to track remote branch master from origin.
+
+If we don't do git push with the -u option, it does not track any remote branch. All it does is push our code up there, and that's it. It doesn't keep any kind of reference that this is the branch there we're going to be working with in the future. The -u option says push it up there, and also make a note of the fact because we're going to be coming back and working with this branch frequently.
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git log --oneline -4
+b28daf2 Git documentation updated with PUSH & Clone testing
+9ec3d0d Steps to PUSH local repo to remote repo documented
+ef2b8ed Git local to Remote integration information added
+5611f79 Created the basic github commandline documentation
+
+Check the commits at remote branch "origin/master", its same as of local branch "master"
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git log --oneline origin/master -4
+b28daf2 Git documentation updated with PUSH & Clone testing
+9ec3d0d Steps to PUSH local repo to remote repo documented
+ef2b8ed Git local to Remote integration information added
+5611f79 Created the basic github commandline documentation
+
+
+
+
+
+
 
 
 
