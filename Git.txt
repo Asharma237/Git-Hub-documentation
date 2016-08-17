@@ -1594,6 +1594,42 @@ $ git branch -a
   remotes/origin/master
  So at this point, we have successfully completed the steps in order to get all of our local code online on the remote repository where other people can see it and start working with it.
 
+=> Cloning a Remote repository.............
+
+How we can go with a remote repository and pull it down to have a local copy of it to work with. This is assuming that we don't have a local copy to start with. This kind of circumstance would come up, if someone said, hey come and collaborate on a project with me.
+
+I have put my code on GitHub, now why don't you go get it, pull down a copy, and then we could start collaborating. Or if you wanted to work on open-source project, the same kind of thing. You'd go out, find the open-source project, get a copy of it to bring on to your local machine, and then you could start contributing.
+
+asharma237@CSCINDAG964079 MINGW64 ~
+$ git clone https://github.com/Asharma237/Git-Hub-documentation
+Cloning into 'Git-Hub-documentation'...
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 9 (delta 2), reused 9 (delta 2), pack-reused 0
+Unpacking objects: 100% (9/9), done.
+Checking connectivity... done.
+
+or clone to new directory..
+
+asharma237@CSCINDAG964079 MINGW64 ~
+$ git clone https://github.com/Asharma237/Git-Hub-documentation NewGit-project
+Cloning into 'Git-Hub-documentation'...
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 9 (delta 2), reused 9 (delta 2), pack-reused 0
+Unpacking objects: 100% (9/9), done.
+Checking connectivity... done.
+
+$ git clone https://github.com/Asharma237/Git-Hub-documentation Lynda-git
+Cloning into 'Lynda-git'...
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 9 (delta 2), reused 9 (delta 2), pack-reused 0
+Unpacking objects: 100% (9/9), done.
+Checking connectivity... done.
+
+
+
 
 
 
