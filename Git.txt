@@ -1500,7 +1500,11 @@ Push => Local to remote
 Fetch => Remote to local
 
 the process that you go through when you're working with a remote, is that you'll do your commits locally, then you'll fetch the latest from the remote server, get your origin branch in sync, then merge any of the new work you did into what just came down from the server and then push the result back up to the remote server. If the process seems at all unclear now, it'll become second nature soon enough.
-local computer
+local computer.
+
+=> Adding a remote repository...
+
+git remote add origin https://github.com/Asharma237/Git-Hub-documentation.git
 
 
 
