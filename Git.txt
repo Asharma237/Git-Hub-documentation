@@ -1,0 +1,1613 @@
+http://git-scm.com
+http://help.github.com/articles/set-up-git
+
+CD ~
+
+1) system config:--
+
+/etc/gitconfig    => Unix
+program files/git/etc/gitconfig  => Windows
+
+2) user config:--
+
+`/.gitconfig  => unix
+$Home\.gitconfig => windows (document settings)
+
+3) Project config
+
+my_project/.git/config
+
+command:--
+
+ls -la
+which git
+git --version
+
+git config --system
+git config --global  => user config change
+git config  => project config change
+
+Change user configuration:--
+
+git config --global user.name "aman sharma"
+git config --global user.email "asharma237@csc.com"
+git config --list
+git config user.name
+CD ~ (you are in user directory)
+ls -la (list the files)
+
+cd..it will show files including .gitconfig
+
+Cat .gitconfig (to chech the file)
+
+git config --global core.editor "notepad.exe"  => add notepad to gitconfig file
+git config --global color.ui true (Add color to git config)
+$cat .gitconfig (output gitconfig file)
+$git help (To get help)
+F for forward
+q for quit
+B for backword
+
+$git init (to start project tracker, make it master, git repository)
+ls -la (. shows hidden dot files.)
+ls -la .git (To see what inside Git direcoty,list of files & folders that git uses while doing tracking
+
+=> perform first commit:---
+
+$ git add .
+
+$git commit -m "Initial commit"
+(1 file changed, 1 insertion, create first-file.txt, now we have tracked our first change)
+("make changes, add changes, commit changes to the repository with a message")
+
+=>Making changes to Files=>
+
+$Git Status
+
+Create second.txt & third.txt in master repository.
+run 
+$git status
+
+it will show untrakced file.
+
+$git add second-file.txt (It will add this file to staging index)
+$ git status 
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   second-file.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        third-file.txt
+
+$ git commit -m "Add my second file to project"
+[master 386085d] Add my second file to project
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 second-file.txt
+
+(This going to commit , what it is staging index)
+
+$ git log
+commit 386085da4f075931a31831ef4a5ac03f7f4915ee
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 17:06:19 2016 +0530
+
+    Add my second file to project
+
+commit b189d6f40574c7da8797ec2cbfac6334cc700d3e
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 15:59:20 2016 +0530
+
+    Initial commit
+$ git add third-file.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git commit -m "Add thrid file to my project"
+[master b355d71] Add thrid file to my project
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 third-file.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git log
+commit b355d71fa466610e1d0eb1a59ab524e22c761f9c
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 17:09:41 2016 +0530
+
+    Add thrid file to my project
+
+commit 386085da4f075931a31831ef4a5ac03f7f4915ee
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 17:06:19 2016 +0530
+
+    Add my second file to project
+
+commit b189d6f40574c7da8797ec2cbfac6334cc700d3e
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 15:59:20 2016 +0530
+
+    Initial commit
+
+
+
+short single line summary (less then 50 character)
+optinally followed by blank line
+keep each line to less then 72 characters
+witr commit messages in  present tense, not past tense
+-"Fix bug" or fixes bug" not "fixed bug"
+bullet points are usually asterisks or hyphens.
+can add "ticket tracking no's" from bugs or support request.
+-"[css,JS]"
+-"bugfix:"
+-"#38706 -"
+Be clear & desciptive.
+-Bad:"update login code"
+-Good "Change user authentication to use Blowfish"
+
+=> Viewing the commit log:
+
+$git log
+
+commit 84585755757575757575757575775
+Author:
+Date:
+
+Initial commit
+
+$git log -n 2
+$git log --since=2012-06-15
+$git log --until=2012-06-15
+$git log --author="Aman"
+
+$git log --grep="Init" (We want to search everything has Init in it)
+
+=> Edit files =>
+
+Modify the first txt by aadding the txt.
+
+$git status
+
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   first-file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+$ git add first-file.txt
+
+$ git commit -m "New changes in my first file"
+[master 3964d34] New changes in my first file
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+(So any change need to added to staging index & then commited)
+$ git add second-file.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git add third-file.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git commit -m "New changes to my second file"
+[master bc1c6cd] New changes to my second file
+ 2 files changed, 2 insertions(+)
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git log
+commit bc1c6cd6f1d1b1e9280bb42b1936b49c147beb84
+commit bc1c6cd6f1d1b1e9280bb42b1936b49c147beb84
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 17:19:56 2016 +0530
+
+    New changes to my second file
+
+commit 3964d34879cd707c477ec822762463a5467f82c9
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 17:18:10 2016 +0530
+
+    New changes in my first file
+
+==============
+
+=> Viewing changes with diff (to see the changes made in file, it compare the 2 files)
+
+$ git diff   or $ git diff first-file.txt (Specify file name)
+
+diff --git a/first-file.txt b/first-file.txt
+index 92ba882..b37fd34 100644
+--- a/first-file.txt   => Old Version with ---
++++ b/first-file.txt   => New version with +++
+@@ -1 +1 @@
+-This is my first file whih i make in my project.
+\ No newline at end of file
++This is my first file which i make in my project of 2012.
+\ No newline at end of file
+
+
+
+
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+============================================================================
+=> View only staged changes.
+
+$git add first-file.txt (move changes to staged intex)
+
+$ git diff --staged
+diff --git a/first-file.txt b/first-file.txt
+index 92ba882..b37fd34 100644
+--- a/first-file.txt
++++ b/first-file.txt
+@@ -1 +1 @@
+-This is my first file whih i make in my project.
+\ No newline at end of file
++This is my first file which i make in my project of 2012.
+$ git diff --staged
+diff --git a/first-file.txt b/first-file.txt
+index 92ba882..b37fd34 100644
+--- a/first-file.txt
++++ b/first-file.txt
+@@ -1 +1 @@
+-This is my first file whih i make in my project.
+\ No newline at end of file
++This is my first file which i make in my project of 2012.
+\ No newline at end of file
+diff --git a/third-file.txt b/third-file.txt
+index 3944415..b0fb377 100644
+--- a/third-file.txt
++++ b/third-file.txt
+@@ -1 +1,5 @@
+-this is the new third file
+\ No newline at end of file
++
++This is new AWs server.
++
++this is my unix project.
+
+\ No newline at end of file
+
+========================
+
+=> Delete Files => create 2 new files in master repository.
+
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        File-to-delete1.txt
+        File-to-delete2.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+ ** (Now add files & commit, then try to delete files form repository)
+$ git add File-to-delete1.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git add File-to-delete2.txt
+
+** delete manually or
+$ git rm File-to-delete1.txt
+rm 'File-to-delete1.txt'
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    File-to-delete1.txt
+
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git commit -m "delete first file"
+[master 7d33217] delete first file
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 File-to-delete1.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git log
+commit 7d3321742b2d18d9d22ed14a820a9526bdcc5177
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 17:50:38 2016 +0530
+
+    delete first file
+
+commit 4cfd75a8714deef9c0e4a68b2a4c976fc168741e
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 17:47:10 2016 +0530
+
+    Red code files
+==================================================================
+=> Move & rename files:-----
+
+Rename first file: (Git shows as file is deleted & new file untracked).
+
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    first-file.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        primary-file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git add primary-file.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git rm first-file.txt
+rm 'first-file.txt'
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    first-file.txt -> primary-file.txt
+
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+
+** Now use Git command to rename file========== .
+
+$ git mv second-file.txt  secondary_file.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    first-file.txt -> primary-file.txt
+        renamed:    second-file.txt -> secondary_file.txt
+
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+
+====
+
+****Create new Sub direcotry (manually) & move file to it using Git
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/my-first-git-project (master)
+$ git mv secondary_file.txt First-Directory/secondary_file.txt
+
+$ git commit -m "reorganized file structure"
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+===========================================
+
+==> Using new project with Git
+
+first do the Git Init to initialize the project stage in git.
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project
+$ git init
+Initialized empty Git repository in C:/Users/asharma237/Desktop/Git-Project/Atlanta-Project/.git/
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project (master)
+$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Bulk user creation/
+        DNS-Wins-Change/
+        Rep_allCSV.cmd
+        atlecheck.htm
+        cone_dns.htm
+        in-dnslint.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project (master)
+$
+
+then add the folders & project.
+
+$ git add .  (you can use "." to add add folders at one go to Git repository)
+
+$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   Bulk user creation/bulk_create_users.ps1
+        new file:   Bulk user creation/import_PDA-users.csv
+        new file:   Bulk user creation/import_PDA-users.xlsx
+        new file:   Bulk user creation/import_users.csv
+        new file:   DNS-Wins-Change/ChangeDNS_WINS_EMEA.vbs
+        new file:   DNS-Wins-Change/DNS1.txt
+        new file:   DNS-Wins-Change/TargetServer.txt
+        new file:   DNS-Wins-Change/Wins.txt
+        new file:   Rep_allCSV.cmd
+        new file:   atlecheck.htm
+        new file:   cone_dns.htm
+        new file:   in-dnslint.txt
+=============
+
+$ git commit -m "Initial commit"
+[master (root-commit) 9a7a01c] Initial commit
+ 12 files changed, 5596 insertions(+)
+ create mode 100644 Bulk user creation/bulk_create_users.ps1
+ create mode 100644 Bulk user creation/import_PDA-users.csv
+ create mode 100644 Bulk user creation/import_PDA-users.xlsx
+ create mode 100644 Bulk user creation/import_users.csv
+ create mode 100644 DNS-Wins-Change/ChangeDNS_WINS_EMEA.vbs
+ create mode 100644 DNS-Wins-Change/DNS1.txt
+ create mode 100644 DNS-Wins-Change/TargetServer.txt
+ create mode 100644 DNS-Wins-Change/Wins.txt
+ create mode 100644 Rep_allCSV.cmd
+ create mode 100644 atlecheck.htm
+ create mode 100644 cone_dns.htm
+ create mode 100644 in-dnslint.txt
+
+** press q to come to $
+$ git log
+commit 9a7a01cd16ebb8139707f866df4728f0ad601de3
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 18:24:22 2016 +0530
+
+    Initial commit
+
+$ git diff cone_dns.htm or git diff --color-words cone_dns.htm
+ (Modify the html file with multiple changes using txt editor).
+
+$git commit -am "Changed the server names"  => Add & commit at one got for all changes. Use it carefully as it is not used for new or deleted files.
+=======
+
+=> Undo changes in working directory............
+Delete the content from the txt file.
+Run 
+$Git status
+$Git diff (to see the lines deleted)
+If you want to undo the changes to the file.
+
+$ git checkout -- DNS-Wins-2016/TargetServer.txt (It will roll back the file or directory changes, pull previous version file or directory from the master repository "--" used to work checkout on same branch).
+$ git status
+
+=> Undo changes in the staging index.........
+
+Modify the HTML file cut & past the connent, save the file.
+$ Git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   cone_dns.htm
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+
+$ git reset HEAD cone_dns.htm
+Unstaged changes after reset:
+D       Working Copy of cone_dns.htm
+M       cone_dns.htm
+
+$ Git status
+
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+               modified:   cone_dns.htm
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git rm  cone_dns.htm (To delete file)
+
+=>>Ammending Commits.....................
+
+If you stuck on ">" press control+C to come on $
+
+$ git commit --amend -m "Atle file is updated" (You can amend any commit done by you using same commit message used coping from git log.)
+$ git commit --amend -m "Atle file is updated apply to Atle domin" (You can modify the commit message as well)
+
+commit 256748a4e7f449e16371ce74cba0b55e1e52c41b => SHA
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 20:24:45 2016 +0530
+
+    html file is changed with new informaiton on servers
+
+commit 3fc818ba0877628d48ccd7fef1f93271d724ccae => SHA changes with every commit.
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Thu Aug 11 20:18:26 2016 +0530
+
+    DNS file renamed
+
+====================
+=> Retrieving old verions =>......
+
+$Git log 
+
+$Git check out 3fc818ba08 -- atlecheck.htm
+$ git diff --staged
+
+$ git status   (**Detached by mistake, again attach to branch).
+HEAD detached at bb41d6f
+nothing to commit, working tree clean
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project ((bb41d6f...))
+$ ^C
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project ((bb41d6f...))
+$ git checkout -b atlecheck.htm  (re-attaching the HEAD to working branch).
+Switched to a new branch 'atlecheck.htm'
+
+=> Reverting the commit..........................................
+
+$ git log
+commit 3121b2981658c678e574a469b9d61bf4b5871dcd
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Fri Aug 12 15:19:54 2016 +0530
+
+    Updated the file DNS-2016 with DNS info
+
+commit 602b68a314ff5b8ca7e256936592de0207b6394e
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Fri Aug 12 15:18:32 2016 +0530
+
+    Minor changes done in the file DNS-2016
+
+commit 40f6c0e49a3e52a25b79b51b94043a17da033ad9
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Fri Aug 12 15:16:51 2016 +0530
+
+    unwanted data deleted out of DNS-2016 file
+
+=> Using Reset to udndo commits:-----------------------------------
+Git Reset
+1) Soft: Does not change the staging index or working directory.
+2) Mixed (Default): changes staging index to match the repository. ?Does not change the working dirctory.
+3) Hard:Changes staging index & working directory to match the repository.
+$ Git reset --soft d9bf7bb   
+
+=> To check where is the HEAD pointer now*******
+
+$ cat .git/HEAD
+ref: refs/heads/atlecheck.htm
+
+$ cat .git/refs/heads/atlecheck.htm
+d9bf7bbd8391186f867cc475c66b6441c845a334
+
+==> Removing untracked files....(Files which you do not want in repo, clean them).
+
+$ git clean -n   (This will list the files which are not in repository)
+Would remove Junk1.txt
+Would remove Junk2.txt
+Would remove Junk3.txt
+
+$ git add Junk3.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project (atlecheck.htm)
+$ git clean -n
+Would remove Junk1.txt
+Would remove Junk2.txt
+
+$ git clean -f
+Removing Junk1.txt
+Removing Junk2.txt
+$ git reset HEAD Junk3.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project (atlecheck.htm)
+$ git status
+On branch atlecheck.htm
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Junk3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git clean -f (if you want throw out unwanted files of working directory,permanently deleted)
+Removing Junk3.txt
+
+$ git status
+On branch atlecheck.htm
+nothing to commit, working tree clean
+
+=> Ignore files in repo.
+
+1. Create the .gitignore file using special word editor & save in repo.
+2. copy file names which you want to ignore in .gitignore. Example
+like
+#Comment
+logfile.txt
+tempfile.txt
+*.Zip
+log/*.log
+*.txt
+log/*.log.(0-9)
+assets/photoshop/
+assets/videos/
+.GZ
+.compiled source code
+.packages & compressed files
+. logs & databases
+.OS generated files, nothing to do with project.
+.user-uploaded assets (images, PDFs,video), as dynamic in changes.
+!assets/Videos/tour_*.mp4  => This means you want to track this content.
+
+Q: would log/archive/access.log will be ignored=> No. As it is under Archive directory,which is not under above  ignore list.
+
+https://help.github.com/articles/ignoring-files
+https://github.com/github/gitignore
+
+=> Ignoring files Globally :---ignore files in all repositories.
+
+Add globalignore list at the root directory.
+
+asharma237@CSCINDAG964079 MINGW64 ~
+$ git config --global core.excludesfile /users/asharma237/.gitignoreglobal
+
+$ cat .gitconfig  (To read content of .gitconfig file)
+[user]
+        name = Aman Sharma
+        email = asharma237@csc.com
+[core]
+        editor = notepad.exe
+        excludesfile = C:/Program Files/Git/users/asharma237/.gitignoreglobal
+[color]
+        ui = true
+
+
+=> Ignoring Tracked files ......
+Create a tempfile.xlsx file , add & commit in repo, add this to .gitignore, see below result. as this is tracked file hence it is not ignored even after adding to ignore file. as untracked file got ignored such way.
+
+$ git status
+On branch atlecheck.htm
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   .gitignore
+        modified:   tempfile.xlsx
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git rm --cached tempfile.xlsx => This remove the file from Index, but keep in repo\wrking directory.
+rm 'tempfile.xlsx'
+$ git add .gitignore
+$ git commit -m "remove the tempfile.xlsx from staging index"
+[atlecheck.htm 4e3b17e] remove the tempfile.xlsx from staging index
+ 2 files changed, 1 insertion(+)
+ delete mode 100644 tempfile.xlsx
+
+Now edit the tempfile.xlsx....save it.
+
+$ git status   => Now any changes to track files are not flagged.
+On branch atlecheck.htm
+nothing to commit, working tree clean
+
+=> Tacking Empty directories............
+git is used to track files not directories but directories consisting of files, not empty dirctory.
+cheat: If you have empty sub folder or folder inside a project repo, then put a file inside it called .gitkeep,
+then add & commit it, then this folder will be tracked. leaving it empty will not track it.
+
+$ ls -la HR/
+total 4
+drwxr-xr-x 1 asharma237 1049089 0 Aug 12 19:04 ./
+drwxr-xr-x 1 asharma237 1049089 0 Aug 12 19:03 ../
+-rw-r--r-- 1 asharma237 1049089 0 Aug 12 19:04 .gitkeep
+$ git status
+On branch atlecheck.htm
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        HR/
+
+nothing added to commit but untracked files present (use "git add" to track)
+$ git add HR/
+
+$ git status
+On branch atlecheck.htm
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   HR/.gitkeep  => Here you get file name after adding.
+$ git commit -m "Added a empty file '.gitkeep' to track empty folder"
+[atlecheck.htm fc2e195] Added a empty file '.gitkeep' to track empty folder
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 HR/.gitkeep
+$ git status
+On branch atlecheck.htm
+nothing to commit, working tree clean
+=====================
+Suppose that you create a .gitignore file in the root of your working directory and the file contains the line: *.php Which files will be ignored by Git?
+
+all .php files will be ignored.
+======================
+Navigating the Commit Tree=>
+Tree-ish
+
+$ git ls-tree master
+040000 tree 968963e730f6b398aecd84847cf23933b32776ba    Bulk user creation
+040000 tree 3c671e1d0b71a86b3dd696b1d204af2a2499184b    DNS-Wins-2016
+100644 blob c89af0d5b451eb2f4ec036d0efd87ac11fb63ef9    Rep_allCSV.cmd
+100644 blob 6f1a01e423841c73bd2ae2b952b855d8c16055ae    atlecheck.htm
+100644 blob 760c937e6222667ea201bf58dab81bfed9d7a9eb    out-dnslist.txt
+
+=> Getting more from Commit logs..
+
+$ git log --oneline
+e0a6454 Folder renamed
+8cab3e5 Directory renamed Bulk-users-creation
+6a875bb New changes to technology
+0c643ca Technology update to ITstatus.txt file
+a4b55c5 New Technology folder added
+68cab94 New test file added
+392f66c Ignore list updated
+fc2e195 Added a empty file '.gitkeep' to track empty folder
+4e3b17e remove the tempfile.xlsx from staging index
+30baf43 This is my temp excel file.
+ca40672 Add .gitignore file
+d9bf7bb Revert: Minor revert changes done
+4a156d6 Revert the changes for document DNS-2016
+3121b29 Updated the file DNS-2016 with DNS info
+602b68a Minor changes done in the file DNS-2016
+40f6c0e unwanted data deleted out of DNS-2016 file
+bb41d6f File Deleted
+dff969a Directory & file renamed
+256748a html file is changed with new informaiton on servers
+3fc818b DNS file renamed
+7342df3 Changed the server names
+9a7a01c Initial commit
+
+$ git log --oneline -5
+e0a6454 Folder renamed
+8cab3e5 Directory renamed Bulk-users-creation
+6a875bb New changes to technology
+0c643ca Technology update to ITstatus.txt file
+a4b55c5 New Technology folder added
+
+$ git log --since="2016-08-15"
+commit e0a645459838cc8435611926b5f6f5aa088c481f
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Tue Aug 16 13:11:52 2016 +0530
+
+    Folder renamed
+
+commit 8cab3e52cdc330b4f5579903ad14f9dc08760bf8
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Tue Aug 16 13:09:13 2016 +0530
+
+    Directory renamed Bulk-users-creation
+
+commit 6a875bb21ba90e782c15c0f723d68448f7dabb8f
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Tue Aug 16 13:02:32 2016 +0530
+
+    New changes to technology
+
+commit 0c643ca893c17598e7f3768c130d4eb29263ead6
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Mon Aug 15 13:53:43 2016 +0530
+
+    Technology update to ITstatus.txt file
+
+$ git log --until="2016-08-16"
+$ git log --before="2016-08-16"
+$ git log --author="Aman"
+$ git log --grep="technology" (Look changes in folder or file)...
+commit 6a875bb21ba90e782c15c0f723d68448f7dabb8f
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Tue Aug 16 13:02:32 2016 +0530
+
+    New changes to technology
+
+$ git log -p (Gives you detail, what has happen to the file.).
+$ git log --format=oneline (It show full SHA, in place or partial SHA in git log --oneline).
+e0a645459838cc8435611926b5f6f5aa088c481f Folder renamed
+8cab3e52cdc330b4f5579903ad14f9dc08760bf8 Directory renamed Bulk-users-creation
+6a875bb21ba90e782c15c0f723d68448f7dabb8f New changes to technology
+0c643ca893c17598e7f3768c130d4eb29263ead6 Technology update to ITstatus.txt file
+a4b55c518db0579de15e4ef18509885c894f3696 New Technology folder added
+68cab94a8871e7c19a359a1ad3c133124d84f4fb New test file added
+392f66c39df221cf7ebf097465041fa0dd266ea8 Ignore list updated
+fc2e195b403e4e7118f541cfa9e7451fe056dec6 Added a empty file '.gitkeep' to track empty folder
+4e3b17e9842eaf585433744961457b5fce1703f0 remove the tempfile.xlsx from staging index
+30baf43a558f6253a1e4e129cf9382405e2b89f0 This is my temp excel file.
+$ git log --format=fuller
+commit e0a645459838cc8435611926b5f6f5aa088c481f
+Author:     Aman Sharma <asharma237@csc.com>
+AuthorDate: Tue Aug 16 13:11:52 2016 +0530
+Commit:     Aman Sharma <asharma237@csc.com>
+CommitDate: Tue Aug 16 13:11:52 2016 +0530
+$ git log --format=medium
+commit e0a645459838cc8435611926b5f6f5aa088c481f
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Tue Aug 16 13:11:52 2016 +0530
+
+    Folder renamed
+$ git log --format=email
+From e0a645459838cc8435611926b5f6f5aa088c481f Mon Sep 17 00:00:00 2001
+From: Aman Sharma <asharma237@csc.com>
+Date: Tue, 16 Aug 2016 13:11:52 +0530
+Subject: [PATCH] Folder renamed
+
+$ git log --graph
+* commit e0a645459838cc8435611926b5f6f5aa088c481f
+| Author: Aman Sharma <asharma237@csc.com>
+| Date:   Tue Aug 16 13:11:52 2016 +0530
+|
+|     Folder renamed
+|
+* commit 8cab3e52cdc330b4f5579903ad14f9dc08760bf8
+| Author: Aman Sharma <asharma237@csc.com>
+| Date:   Tue Aug 16 13:09:13 2016 +0530
+|
+|     Directory renamed Bulk-users-creation
+|
+* commit 6a875bb21ba90e782c15c0f723d68448f7dabb8f
+| Author: Aman Sharma <asharma237@csc.com>
+| Date:   Tue Aug 16 13:02:32 2016 +0530
+|
+|     New changes to technology
+$ git log --oneline --graph --all --decorate
+* e0a6454 (HEAD -> atlecheck.htm) Folder renamed
+* 8cab3e5 Directory renamed Bulk-users-creation
+* 6a875bb New changes to technology
+* 0c643ca Technology update to ITstatus.txt file
+* a4b55c5 New Technology folder added
+* 68cab94 New test file added
+* 392f66c Ignore list updated
+* fc2e195 Added a empty file '.gitkeep' to track empty folder
+* 4e3b17e remove the tempfile.xlsx from staging index
+* 30baf43 This is my temp excel file.
+* ca40672 Add .gitignore file
+* d9bf7bb Revert: Minor revert changes done
+* 4a156d6 Revert the changes for document DNS-2016
+* 3121b29 Updated the file DNS-2016 with DNS info
+* 602b68a Minor changes done in the file DNS-2016
+* 40f6c0e unwanted data deleted out of DNS-2016 file
+| * e8c2e34 (master) Atle file is updated apply to Atle domin
+| * 4211684 working copy deleted
+|/
+* bb41d6f File Deleted
+* dff969a Directory & file renamed
+* 256748a html file is changed with new informaiton on servers
+* 3fc818b DNS file renamed
+* 7342df3 Changed the server names
+* 9a7a01c Initial commit
+
+=> Viewing Commit................
+
+$ git log --oneline
+e0a6454 Folder renamed
+8cab3e5 Directory renamed Bulk-users-creation
+6a875bb New changes to technology
+
+$ git show 0c643ca
+commit 0c643ca893c17598e7f3768c130d4eb29263ead6
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Mon Aug 15 13:53:43 2016 +0530
+
+    Technology update to ITstatus.txt file
+
+diff --git a/Bulk user creation/Technology/IT-Status.txt b/Bulk user creation/Technology/IT-Status.txt
+index 618de5c..173b087 100644
+--- a/Bulk user creation/Technology/IT-Status.txt
++++ b/Bulk user creation/Technology/IT-Status.txt
+@@ -1 +1,3 @@
+-jkjjfjfdjfdjf
+\ No newline at end of file
++jkjjfjfdjfdjf
++
++This is technology update 2016 !!
+\ No newline at end of file
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project (atlecheck.htm)
+
+$ git show ca40672
+commit ca40672ef0c24cd6877ff3fd7711915dd4cecfbd
+Author: Aman Sharma <asharma237@csc.com>
+Date:   Fri Aug 12 18:04:26 2016 +0530
+
+    Add .gitignore file
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..47b94ab
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,3 @@
++tempfile.txt
++logfile.txt
++gdgd.txt
+\ No newline at end of file
+
+$ git show --format=oneline HEAD
+$ git show --format=oneline HEAD^^  (Head back 2)
+$ git show --format=oneline HEAD~3 (Head back 3, surf around commits & see what happen)
+$ git ls-tree master
+040000 tree 968963e730f6b398aecd84847cf23933b32776ba    Bulk user creation
+040000 tree 3c671e1d0b71a86b3dd696b1d204af2a2499184b    DNS-Wins-2016
+100644 blob c89af0d5b451eb2f4ec036d0efd87ac11fb63ef9    Rep_allCSV.cmd
+100644 blob 6f1a01e423841c73bd2ae2b952b855d8c16055ae    atlecheck.htm
+100644 blob 760c937e6222667ea201bf58dab81bfed9d7a9eb    out-dnslist.txt
+
+or
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project (atlecheck.htm)
+$ git show 968963e73
+tree 968963e73
+
+bulk_create_users.ps1
+import_PDA-users.csv
+import_PDA-users.xlsx
+import_users.csv
+
+$ git ls-tree 968963e730f6b398aec
+100644 blob 78fa30e1a92fad651d14ec7811057e015643fddb    bulk_create_users.ps1
+100644 blob 9573305c8c2eb39c1a0a19b0d525d8c7ff2ac0a4    import_PDA-users.csv
+100644 blob 4a55fa4342fd292a2ab32148d8222e618b523910    import_PDA-users.xlsx
+100644 blob 33dce5279cda2d739c950ae31d6bdeb4905eb566    import_users.csv
+
+
+=> Comparing commits...........compare commit snapshots.
+$ git log --format=oneline (Get the SHA's & commit comments)
+$ git diff 68cab9 (You can compare where we are now against previous time using the old SHA, it will compare changes done from that SHA till current working directory).
+$git diff 68cab9 itstatus.txt 
+$ git diff 0c643ca Bulk-user-creation/Technology/IT-Status.txt
+diff --git a/Bulk-user-creation/Technology/IT-Status.txt b/Bulk-user-creation/Technology/IT-Status.txt
+new file mode 100644
+index 0000000..a584993
+--- /dev/null
++++ b/Bulk-user-creation/Technology/IT-Status.txt
+@@ -0,0 +1,5 @@
++jkjjfjfdjfdjf
++
++This is technology update 2016 !!
++
++This is revision document !!
+\ No newline at end of file
+
+$ git log --oneline
+e0a6454 Folder renamed
+8cab3e5 Directory renamed Bulk-users-creation
+6a875bb New changes to technology
+0c643ca Technology update to ITstatus.txt file
+a4b55c5 New Technology folder added
+68cab94 New test file added
+392f66c Ignore list updated
+
+$(You can compare 2 tree-ishes using a range of SHA's).
+$ git diff 0c643ca..a4b55c5
+diff --git a/Bulk user creation/Technology/IT-Status.txt b/Bulk user creation/Technology/IT-Status.txt
+index 173b087..618de5c 100644
+--- a/Bulk user creation/Technology/IT-Status.txt
++++ b/Bulk user creation/Technology/IT-Status.txt
+@@ -1,3 +1 @@
+-jkjjfjfdjfdjf
+-
+-This is technology update 2016 !!
+\ No newline at end of file
++jkjjfjfdjfdjf
+\ No newline at end of file
+$ git diff 0c643ca..a4b55c5 Bulk-user-creation/import_users.csv (compare snapshots\SHA's for file import_users.csv, if its output is blank, that means nothing change between 2 point in time).
+
+$ git diff --stat --summary 7342df3..HEAD
+ .gitignore                                                |   5 +++++
+ Bulk-user-creation/Technology/IT-Status.txt               |   5 +++++
+ .../bulk_create_users.ps1                                 |   0
+ .../import_PDA-users.csv                                  |   0
+ .../import_PDA-users.xlsx                                 | Bin
+ .../import_users.csv                                      |   0
+ Bulk-user-creation/test-file.txt                          |   1 +
+ .../ChangeDNS_WINS_EMEA.vbs                               |   0
+ DNS-Wins-Change/DNS1.txt => DNS-Wins-2016/DNS-2016.txt    |  14 ++++++++++++++
+ {DNS-Wins-Change => DNS-Wins-2016}/TargetServer.txt       |   0
+ {DNS-Wins-Change => DNS-Wins-2016}/Wins.txt               |   0
+ HR/.gitkeep                                               |   0
+ cone_dns.htm => Working Copy of cone_dns.htm              |   2 +-
+ in-dnslint.txt => out-dnslist.txt                         |   0
+ 14 files changed, 26 insertions(+), 1 deletion(-)
+ create mode 100644 .gitignore
+ create mode 100644 Bulk-user-creation/Technology/IT-Status.txt
+ rename {Bulk user creation => Bulk-user-creation}/bulk_create_users.ps1 (100%)
+ rename {Bulk user creation => Bulk-user-creation}/import_PDA-users.csv (100%)
+ rename {Bulk user creation => Bulk-user-creation}/import_PDA-users.xlsx (100%)
+ rename {Bulk user creation => Bulk-user-creation}/import_users.csv (100%)
+ create mode 100644 Bulk-user-creation/test-file.txt
+ rename {DNS-Wins-Change => DNS-Wins-2016}/ChangeDNS_WINS_EMEA.vbs (100%)
+ rename DNS-Wins-Change/DNS1.txt => DNS-Wins-2016/DNS-2016.txt (94%)
+ rename {DNS-Wins-Change => DNS-Wins-2016}/TargetServer.txt (100%)
+ rename {DNS-Wins-Change => DNS-Wins-2016}/Wins.txt (100%)
+ create mode 100644 HR/.gitkeep
+ rename cone_dns.htm => Working Copy of cone_dns.htm (98%)
+ rename in-dnslint.txt => out-dnslist.txt (100%)
+
+$ git diff -w 7342df3..HEAD  => b is for ignore space change. W is for ignoring all space changes.
+
+$ git ls-tree HEAD
+100644 blob 57ce59b1fb798bcac08059c5aca66e7881dd7258    .gitignore
+040000 tree 16b62f7bf3e00cdbae862e92980503f78acdc209    Bulk-user-creation
+040000 tree 23502a5819774ee2a8bc634300e8a9effffc540b    DNS-Wins-2016
+040000 tree d564d0bc3dd917926892c55e3706cc116d5b165e    HR
+100644 blob c89af0d5b451eb2f4ec036d0efd87ac11fb63ef9    Rep_allCSV.cmd
+100644 blob 735704a46ec8966a7bc58546dfa6a70e05fa0231    Working Copy of cone_dns.htm
+100644 blob 77dab7d95eb17fe522866217ed8f901661952ec9    atlecheck.htm
+100644 blob 760c937e6222667ea201bf58dab81bfed9d7a9eb    out-dnslist.txt
+
+
+
+=>   Topic Branching ..............
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/Atlanta-Project (atlecheck.htm)
+$ git branch
+* atlecheck.htm  ("*" shows you are in Atlecheck.htm branch at the moment).
+  master
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ git branch
+* master => * refer to current branch or currently checkout branch.
+$ cat .git/HEAD
+ref: refs/heads/master
+
+HEAD Says here is the branch that i am now.... use CAT command to read the .git\HEAD file.
+$ ls -la .git/refs/HEADS
+total 1
+drwxr-xr-x 1 asharma237 1049089  0 Aug 11 18:05 ./
+drwxr-xr-x 1 asharma237 1049089  0 Aug 11 15:41 ../
+-rw-r--r-- 1 asharma237 1049089 41 Aug 11 18:05 master
+
+$ cat .git/refs/heads/master
+39f39f1a466aaa04a39c81f7e4d0b57d0c0ab981
+
+$ git log --oneline
+39f39f1 reorganized file structure
+af78d74 third file deleted
+56ee924 Removed 2nd file
+7d33217 delete first file
+4cfd75a Red code files
+ea3323c minor changes incorporated
+107cd42 Minor text edits
+bc1c6cd New changes to my second file
+3964d34 New changes in my first file
+b355d71 Add thrid file to my project
+386085d Add my second file to project
+b189d6f Initial commit
+
+$ git branch Technology  (Create new branch)
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ git branch
+  Technology
+* master
+
+$ ls -la .git/refs/heads
+total 2
+drwxr-xr-x 1 asharma237 1049089  0 Aug 16 16:16 ./
+drwxr-xr-x 1 asharma237 1049089  0 Aug 11 15:41 ../
+-rw-r--r-- 1 asharma237 1049089 41 Aug 11 18:05 master
+-rw-r--r-- 1 asharma237 1049089 41 Aug 16 16:16 Technology
+
+$ cat .git/refs/heads/Technology  
+39f39f1a466aaa04a39c81f7e4d0b57d0c0ab981
+
+New branch "Technology points to same commit as master, as no new commits done so far.
+
+=> Topic Switch Branches ............
+
+$ git branch
+  Technology
+* master
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ cat .git/HEAD
+ref: refs/heads/master
+
+lets see how to check out new branch.
+
+$ git checkout technology => Switch to new brach...
+Switched to branch 'technology'
+$ cat .git/HEAD
+ref: refs/heads/technology
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ cat .git/refs/heads/Technology
+39f39f1a466aaa04a39c81f7e4d0b57d0c0ab981
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git log --oneline   => (The SHA changed now after commit & HEAD refers to new branch Technology).
+d4ce3ac Primary file updated
+39f39f1 reorganized file structure
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git checkout master  => (Switch the branches)
+Switched to branch 'master'
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ git log --oneline
+39f39f1 reorganized file structure
+af78d74 third file deleted
+
+Now the changes reverted since last commit done in new branch, you can check the file.
+$ git checkout technology
+Switched to branch 'technology'
+
+Now if you check the txt file , you will again see the changes since last commit, its easy to swap out files & folders in your working directory just by typing checkout different branch.
+
+=> Topic Creating & Switching branches...............
+$ git checkout -b Transformation  ("-b " means create & swtich to new branch at same time.)
+Switched to a new branch 'Transformation'
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (Transformation)
+$ git status
+On branch Transformation
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   primary-file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (Transformation)
+$ git add primary-file.txt
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (Transformation)
+$ git commit -m " Primary file updated with transformation"
+[Transformation 333b6e2]  Primary file updated with transformation
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (Transformation)
+$ git status
+On branch Transformation
+nothing to commit, working tree clean
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (Transformation)
+$ git log --oneline
+333b6e2  Primary file updated with transformation
+d4ce3ac Primary file updated
+39f39f1 reorganized file structure
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (Transformation)
+$ git checkout technology
+Switched to branch 'technology'
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git log --oneline
+d4ce3ac Primary file updated
+39f39f1 reorganized file structure
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git checkout transformation
+Switched to branch 'transformation'
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (transformation)
+$ git log --oneline
+333b6e2  Primary file updated with transformation
+d4ce3ac Primary file updated
+39f39f1 reorganized file structure
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git log --graph --oneline --decorate --all
+* 333b6e2 (Transformation)  Primary file updated with transformation
+* d4ce3ac (HEAD -> technology) Primary file updated
+* 39f39f1 (master) reorganized file structure
+
+=> Switching brancges with uncommitted changes not possible till you commit changes.
+
+=> Comparing Branches
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git branch
+  Transformation
+  master
+* technology
+
+$ git diff master..transformation  (Difference between tip of master & top of transformation)
+diff --git a/primary-file.txt b/primary-file.txt
+index b37fd34..acf898d 100644
+--- a/primary-file.txt
++++ b/primary-file.txt
+@@ -1 +1,5 @@
+-This is my first file which i make in my project of 2012.
+\ No newline at end of file
++This is my first file which i make in my project of 2012.
++
++This is the tranformation documentation for 2016 !!
++
++Transformation of IT 2016 !!
+\ No newline at end of file
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git diff --color-words master..transformation
+diff --git a/primary-file.txt b/primary-file.txt
+index b37fd34..acf898d 100644
+--- a/primary-file.txt
++++ b/primary-file.txt
+@@ -1 +1,5 @@
+This is my first file which i make in my project of 2012.
+
+This is the tranformation documentation for 2016 !!
+
+Transformation of IT 2016 !!
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$
+$ git diff --color-words master..transformation^
+diff --git a/primary-file.txt b/primary-file.txt
+index b37fd34..06e67ec 100644
+--- a/primary-file.txt
++++ b/primary-file.txt
+@@ -1 +1,3 @@
+This is my first file which i make in my project of 2012.
+
+This is the tranformation documentation for 2016 !!
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git branch --merged
+  master
+* technology
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git branch
+  Transformation
+  master
+* technology
+$ git branch --merged => (techology brach has information of all commits of master)
+  master
+* technology
+
+
+
+=> Rename Branch..........
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (technology)
+$ git branch -m technology TECh-2016 (-m is renaming the brach m stands for move, Git consider move as rename).
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (TECh-2016)
+$ git branch
+* TECh-2016
+  Transformation
+  master
+
+=> Delete the branch => 
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ git branch IT-2015
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ git branch
+  IT-2015
+  TECh-2016
+  Transformation
+* master
+
+$ git branch -d it-2015 (=> "-d" stands for delete branch or use --delete, you need to check out or came out of the branch, only then you can delete it)
+Deleted branch it-2015 (was 39f39f1).
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ git branch
+  Transformation
+* master
+  tech-2016
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ git branch -d tech-2016
+error: The branch 'tech-2016' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D tech-2016'.
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+$ git branch -D tech-2016
+Deleted branch tech-2016 (was 7800170).
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Git-Project/my-first-git-project (master)
+
+===============
+=> Topic Configuring\customize the command prompt to show branches..........
+
+asharma237@CSCINDAG964079 MINGW64 ~
+$ export ps1='Aman'
+
+asharma237@CSCINDAG964079 MINGW64 ~
+$ export PS1='Aman'
+Aman
+Aman
+Amanexport PS1='Aman$'
+Aman$
+Aman$ git branch
+  Transformation
+* master
+Aman$ clear
+Aman$ export PS1='\W$(__git_ps1 "(%s)") > '
+my-first-git-project(master) > jere i am in directory "my-first-git-project" & branch "master"
+
+=> Merge Branches....
+
+Here we will merge one branch to other  along with changes..
+
+$ git merge transformation
+Auto-merging primary-file.txt
+CONFLICT (content): Merge conflict in primary-file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+$get merge --abort
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master|MERGING)
+$ git commit -am "Master branch updated"
+[master 256ede2] Master branch updated
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (transformation)
+$ git merge master
+Updating 333b6e2..256ede2
+Fast-forward
+ primary-file.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+$ git diff transformation..master
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (transformation)
+$ git diff master..transformation
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (transformation)
+$
+
+=> Using Fast-forward merge Vs true merge
+
+
+
+now you can see all changes are copied to master.
+
+** no-ff says don't do a fast forward merge.
+** ff-only says do the merge only if you can do the fastforward, if you can;t do a fast forward merge, just abort.
+$git merge --ff-only_branch
+$git merge --no-ff_branch
+
+$ git branch --merged
+* master
+  merged
+  transformation
+  transition
+$ git log --graph --oneline --all --decorate
+*   85db095 (HEAD -> master, merged) Merging to master branch
+|\
+| * 429c384 (transition) Transition status updated 400
+| * 8a8155e Transition status 200
+* | 1db5bbe Primary file version-2
+* | 273fab0  Seocndary file updated with Agile information
+* | de9310e secondary file updated with google cloud
+|/
+* 95dcc20 Transition information added to document
+*   256ede2 (transformation) Master branch updated
+|\
+| * 333b6e2  Primary file updated with transformation
+| * d4ce3ac Primary file updated
+* | 4c0d8e3 File is updated with IT data
+|/
+* 39f39f1 reorganized file structure
+* af78d74 third file deleted
+* 56ee924 Removed 2nd file
+* 7d33217 delete first file
+
+=> Stashed Changes .............
+So please commit your changes or stash them before you can switch branches. This is a classic case of when we want to use stash. It's not the only time you can use it, you can use it any time you want to just take some stuff and shove it in a drawer. But this is the time that you'll probably use it most often when you need to switch branches, you have some changes, you're not quite ready to turn them into a commit yet, so we've got stash them instead. 
+Saving changes to Stash.
+$ git stash save "Temporarily saved the new data for secondary.txt"
+Saved working directory and index state On master: Temporarily saved the new data for secondary.txt
+HEAD is now at 85db095 Merging to master branch
+
+$ git stash list
+stash@{0}: On master: Temporarily saved the new data for secondary.txt
+
+The stash is available all the time. I can always pull from it. That makes it really handy, especially if you start to make a change on one branch, and then you realize this isn't the branch that you wanted to commit those changes to, you can put them in the stash, change your branches and then pull them back out of the stash again.and then it gives the description that we gave to it, so we'd know what where we stashing.
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master)
+$ git stash list
+stash@{0}: On master: Temporarily saved the new data for secondary.txt
+
+If we want to see more information, we really want to use the -p option, which is show it to us as a patch.
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master)
+$ git stash show -p stash@{0}
+diff --git a/First-Directory/secondary_file.txt b/First-Directory/secondary_file.txt
+index bea98f9..4e817aa 100644
+--- a/First-Directory/secondary_file.txt
++++ b/First-Directory/secondary_file.txt
+@@ -11,3 +11,4 @@ This is Agile cloud !!
+ =======
+ This is hosted in AWS cloud.200 servers are transition in CSC datacenter !! 400 servers transition in CSC DC till 16th-Aug-2016.
+ >>>>>>> transition
++This is new transition-17-Aug-2016
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master)
+
+=> Retreving Stashed Changes.........
+both commands will pull the changes out of stash & bring to working directory.
+$ git stash pop   (or $git stash apply)
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   First-Directory/secondary_file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (4d52c57c2ad4acbe321a648e8498caa4a873b317)
+
+** Git stash apply leaves the copy inside stash as well.
+** Git stash pop removes the copy from the Stash, bring everything to working directory.
+
+if you have 3 stashes, then pls use stash@{2} 0,1,2 to pull 3rd stash.
+$git stash pop stash@{2}
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master)
+$ git stash apply
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   First-Directory/secondary_file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master)
+$ git stash list
+stash@{0}: On master: Secondary file is updated with 17th-aug-16 changes
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master)
+$ git stash drop stash@{0}
+Dropped stash@{0} (6a7e25166b726436cd86aab7576dfda1e8ddafaa)
+
+asharma237@CSCINDAG964079 MINGW64 ~/Desktop/Git-Project/my-first-git-project (master)
+$ git stash list
+
+$git stash clear => simply clear or delete multiple stashes at one go....
+========================================================================
+
+=>   Remotes Gits.............
+
+remote computer
+Push => Local to remote
+Fetch => Remote to local
+
+the process that you go through when you're working with a remote, is that you'll do your commits locally, then you'll fetch the latest from the remote server, get your origin branch in sync, then merge any of the new work you did into what just came down from the server and then push the result back up to the remote server. If the process seems at all unclear now, it'll become second nature soon enough.
+local computer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
