@@ -1698,12 +1698,43 @@ b28daf2 Git documentation updated with PUSH & Clone testing
 -r to know remote branches..
 
 asharma237@CSCINDAG964079 MINGW64 ~/Lynda-git (master)
-$ git branch -r
+$ git branch -r (remote branches)
   origin/HEAD -> origin/master
   origin/master
+$git branch -a (all branches)
 
+Fetch Rules=>
+1. Fetch before you work.
+2. Fetch before you push.
+3. Fetch often.
 
+=>Merging in Fetched changes .................=>
+Now you will recall earlier that I told you that origin/master is just a branch like any other branch.
 
+It's a remote branch, the only thing that really differentiates it from the branches that we normally work with is the fact that we can't check it out, other than that it's really the same, and it make sense that we can't check it out, because Git really needs to be able to keep it in sync with what's on the remote server, and it doesn't want us getting in the way of that. If we check that out, we might make a commit to it, and that would just confuse things. Instead, we have our branches that we are in charge of, but Git is going to remain in charge of origin/master and make sure that it mirrors what's on the remote. But other than the fact that we can't check it out, it is exactly like any other branch.
+asharma237@CSCINDAG964079 MINGW64 ~/Lynda-git (master)
+
+$ git merge origin/master
+Updating 9ec3d0d..b7ad22e
+Fast-forward
+ Git.txt | 119 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 119 insertions(+)
+
+asharma237@CSCINDAG964079 MINGW64 ~/Lynda-git (master)
+$ git log --oneline -3
+b7ad22e git document updated
+82a5ad0 Git doc updated with few more commands
+b28daf2 Git documentation updated with PUSH & Clone testing
+
+asharma237@CSCINDAG964079 MINGW64 ~/Lynda-git (master)
+
+when we do a merge, we are merging with origin/master.
+
+Our local version, that's where we are merging in, we are not going back up to GitHub to see what's there. So when we do a merge, we always want to make sure we do a fetch first. Fetch, then merge.
+Git pull is equal to git fetch+git merge.
+
+=> Checking out remote branch................
+remote branches are exactly like regular branches with one exception, and that's that we can't check them out. That makes sense because Git stays in control of that remote branch so it can make sure it always stays in sync with what's in the remote repository. 
 
 
 
