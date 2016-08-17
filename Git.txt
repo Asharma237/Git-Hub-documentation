@@ -1660,6 +1660,52 @@ b28daf2 Git documentation updated with PUSH & Clone testing
 ef2b8ed Git local to Remote integration information added
 5611f79 Created the basic github commandline documentation
 
+do the changes in master document locally.
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git log --oneline -3
+82a5ad0 Git doc updated with few more commands
+b28daf2 Git documentation updated with PUSH & Clone testing
+9ec3d0d Steps to PUSH local repo to remote repo documented
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git log --oneline origin/master -3
+b28daf2 Git documentation updated with PUSH & Clone testing
+9ec3d0d Steps to PUSH local repo to remote repo documented
+ef2b8ed Git local to Remote integration information added
+
+you can see the commits are differnet now, as changes not pushed to remote.
+Now below will work as local is tracking remote brach, so you can simply run "Git push" without -u option.
+$ git push
+Username for 'https://github.com': asharma237
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 854 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+To https://github.com/Asharma237/Git-Hub-documentation.git
+   b28daf2..82a5ad0  master -> master
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git log --oneline origin/master -3
+82a5ad0 Git doc updated with few more commands
+b28daf2 Git documentation updated with PUSH & Clone testing
+9ec3d0d Steps to PUSH local repo to remote repo documented
+
+=> Fetch changes from a remote repository ..............................
+
+-r to know remote branches..
+
+asharma237@CSCINDAG964079 MINGW64 ~/Lynda-git (master)
+$ git branch -r
+  origin/HEAD -> origin/master
+  origin/master
+
+
+
+
+
 
 
 
