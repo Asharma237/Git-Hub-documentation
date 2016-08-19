@@ -1,3 +1,9 @@
+.....................Git Essential Training.............
+
+Using Git can revolutionize the way you code. You'll have more confidence to make big changes knowing that your old versions are only just a few keystrokes away. You'll feel empowered to try new ideas and code branches without worrying that you might break the main project. And you'll be able to collaborate effectively with other Git users, whether it's on your own project, on a company or client project, or on an open source project. I think you'll find that Git changes the way you code in less obvious ways too.
+
+Your changes will become smaller and more focused. The intentions behind each of your changes will be made more clear. Git forces us to continually consider what we are doing and why we are doing it. Git also helps us to see the changes that others make so that we can learn from their choices and their style. Once you start using it, you will quickly consider Git to be an indispensable tool for all development.
+
 http://git-scm.com
 http://help.github.com/articles/set-up-git
 
@@ -1650,7 +1656,7 @@ b28daf2 Git documentation updated with PUSH & Clone testing
 9ec3d0d Steps to PUSH local repo to remote repo documented
 ef2b8ed Git local to Remote integration information added
 5611f79 Created the basic github commandline documentation
-
+19/Aug/2016 11:31
 Check the commits at remote branch "origin/master", its same as of local branch "master"
 
 asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
@@ -1736,8 +1742,161 @@ Git pull is equal to git fetch+git merge.
 => Checking out remote branch................
 remote branches are exactly like regular branches with one exception, and that's that we can't check them out. That makes sense because Git stays in control of that remote branch so it can make sure it always stays in sync with what's in the remote repository. 
 
-Lets make a non tracking branch for master as origin/non-tracking.
+Lets make a non tracking branch & delete it for master as origin/non-tracking.
 
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git branch origin/non_tracking
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git branch
+* master
+  origin/non_tracking
+
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git branch -u origin/master
+Branch master set up to track remote branch master from origin.
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git branch -d origin/non_tracking
+Deleted branch origin/non_tracking (was 877c9d5).
+
+asharma237@CSCINDAG964079 MINGW64 ~/desktop/Aman-Desktop/Cloud/Github (master)
+$ git branch -a
+* master
+  remotes/origin/master
+
+$ git checkout -b non_tracking origin/master  => **(Create & check out brach at same time)
+M       Git.txt
+Branch non_tracking set up to track remote branch master from origin.
+Switched to a new branch 'non_tracking'
+
+$ git branch -a
+  master
+* non_tracking
+  remotes/origin/master
+
+$ git branch -d non_tracking (Delete the branch)
+Deleted branch non_tracking (was 42abec5).
+
+=> Pushing to an updated Remote branch..............
+ Here is the situation that I'm talking about. Imagine that we have our remote server and our local repository and both of them have three commits in it. We do a fetch, so we know that we are completely in sync, we just have these three git commits. So once I know that I am in sync, I start my work for the day. And over the course of the next hour I put together a commit. I then commit it to my local repository. At the same time though, my coworkers and collaborators have also been making commits and they've been pushing their commits up to the remote server.
+
+So now when I try to push my commits to the remote server, the remote server says, well, I don't know what to do with your commits, there has been some new stuff that's come in in the meantime. Git never tries to do a merge during a push. Instead what Git says is, some new stuff has come in. I'm not sure what to do about all this. You need to fetch the changes that are on the remote server, then sort it out on your end and come back and try again. So we do a fetch. We've got the new information about what's on the remote server, we now see why there's a problem, oh, there were some other commits there.
+
+ So just keep that in mind, if you can't push the remote server, you'll just need to fetch, then merge, then push again. That way we can make sure that everyone's changes are taken into account.
+
+$Git push origin non_tracking:non tracking (you can push information from one branch to other local to remotely)
+
+=> Delete the remote branch:----
+
+$git push origin :non_tracking => you want to delete remote "non_tracking branch"
+
+or
+$git push origin --delete non_tracking
+username\password..
+
+=> Enabling Collaboration.............
+
+There's no sense in duplicating someone else's effort. And then it's also good form for you to post an issue there so that other people can see that you've already staked out this territory. The next thing I want to do is make a fork of the project. This will make your own version of the project on your own GitHub repository. It's no longer part of the main one, and this one you will have write access to. So you go ahead and clone the repository, work with it locally just like you normally would, commit those changes up to your version of the project, and then once you got it all done, it's ready to go, you go back to the GitHub page for the main project, and you issue a Pull Request.
+
+Essentially a Pull Request is like raising your hand and saying I have something here that I want to show you. You submit a message with your request so you identify what the problem was that you saw, or what feature you decided you wanted to add, talk about how you want to do it, and why you think it's good for the project, and if you make the case effectively and your code looks good then they will accept your changes and incorporate them into the main project. They'll grab your branch and merge it in. And then at that point, everyone will have access to your new feature. So that's how you can enable collaboration using Git. The process is little different if you're going to give someone else read/write access or if you're going to work on a project where you don't have write access.
+
+=> A collabration workflow ...................
+
+My work=>....
+
+=> Git checkout master
+=> Git Fetch
+=> Git merge origin/master
+=> Git checkout -b feedback_form
+=> Git add feedback.html
+=> Git commit -m " Add customer feedback form"
+=> Git Fetch
+=> Git push -u origin feedback_form (-u will push your new tracking branch to remote repo).
+I am going to do the work on my new feature in the separate branch, and that way it won't interfere with anything that's going on with master. And if in the end we decide not to do the feature for some reason, it's easy to just throw it away. So the next thing I want to do is create that branch, and I will do that using checkout -b that will check it out as a new branch, or create the branch and switch to it. So now even though the contents of my working directory are the same as master, I've switched to my new feedback form branch.
+
+So I open up my working directory, I make the changes that I want there, in this case I am going to be adding a page called feedback.html, and I go in, and I edit the form and get it all look exactly like I want. When I am done, then I am ready to make my commit. So I add it to the staging area, and then I commit it. At this point, my changes are now on my local repository inside my feedback form branch. I am not ready to merge them into master just yet, I want my coworker Lynda to have a look at them as well. So I need to put them on the remote repository for her to see them.
+
+Before I push them up there though, I want to do a git fetch again and find out if there been any more commits that have come in that I need to take into consideration. If there have been, then I want to take a look at those and see whether I need to bring them into my feedback branch or not. In this example there were no other commits on master. I can go ahead, and I can push my branch up to origin, and I am pushing the whole branch, not just to commit. The branch doesn't exist up on the remote server until I push it. So I use git push, origin feedback_form, and then I also use that -u option.
+
+You will remember that makes it a tracking branch, so now in the future, I will continue to track changes from feedback_form, and it will save me some typing, because git will know where I want to push to without having to tell at each time. So when that's done, my work is now on the remote repository, now my coworkers can all see it. So I send an email to Lynda saying hey Lynda, remember that discussion we had last night about adding the feedback form? Well I did a draft of it, and I put it up on the remote. Can you take a look and let me know what you think? So now let's switch over, and let's look at things from Lynda's point of view.
+
+Lynda's Work =>
+
+=> Clone the work (if dont have remote work copy)
+=> Git checkout master
+=> Git fetch
+=> git merge origin/master
+=> git checkout -b feedback_form origin/feedback_form
+=> git log
+=> Git show 84b6af0 (SHA).
+=> Git Commit -am " Add tour selector to feedback form"
+=> Git fetch
+=> Git push (Hence lynda send the changes to remote repo, informed me via email to check).
+
+
+
+So Lynda also already has the repository, she has been working on it for couple of weeks. If she hadn't been, we know that she would do a git clone, in order to get the repository, and she is also going to be on the master branch, if not we will go ahead and just switch to make sure that she is there. The very first thing that Lynda is going to do, she needs to do a git fetch. Always the first thing. Until she does that fetch, she can't even see the branch that I pushed up there. Her computer hasn't sunk up so it doesn't have that information about all of the other branches that might be available.
+
+After the git fetch though, now git branch -r will show her that new branch, and she can see it. There were changes that came in over night from other coworkers, so she will probably want to incorporate those into her master branch to just to make sure that master is always brought up to date. It's not strictly necessary, but it's a good practice. After she has done that, she will be ready to take a look at my work. So she will want to check out the branch that I pushed up there. Again she will use check out with the -b option. This time she won't just say feedback form which would take it from the branch that she's currently on, her version of master, instead she will say feedback form and the source from that is going to be origin feedback form, the one that I put up there.
+
+=>Again My work =>..........Switch to Feedback branch
+
+=> Git fetch. (Fetching from remote branch)..
+=> Git log -p feedback_form..origin/feedback_form
+Before I merge it in though, I want to take a look at it, so I am going to using git log. I am going to use the -p option which is for patch, and it will show each of the log entries with a diff of all the changes that were made in that log entry. And I am going to ask it to show me everything from feedback form, my copy, up to where origin feedback form is. That's the difference between the state of mine and the state of what Lynda pushed up to the repository. So I can look at those, and I can take a look at all the changes that she made, those changes look fine, I like them.
+=> git merge origin/feedback_form
+
+=> now switch to master branch...
+=> Git fetch
+=> Git merge origin/master
+=> Git merge feedback_form
+=> git push
+
+It may change because you may be collaborating with three or four different people, you may all be checking in and out things, but it's the same basic kind of process over and over again. It may seem like a lot to remember when you're a beginner, but it becomes second nature very quickly.
+
+Q: What is the result of "git push -u origin master"?
+A: It will push the master branch into the origin repository.
+
+Q: "git push origin master" will push my changes to origin/master branch in the origin repository.
+A: True.
+
+Q: "git pull" is not equal to "git fetch plus git merge".
+A: False.
+
+=> Setting up aliases for the commands...............
+
+$git config --global alias.st "status"
+$git config --global alias.co checkout
+$git congig --global alias.ci commit
+$git config --global alias.br branch
+$git config --global alias.df diff
+$git config --global alias.dfs "diff --staged"
+
+And that shows the difference between the staging index and your repository. Now because it has a space in it, we want to make sure that we do put double quotes around it.
+
+$Cat ../../.gitconfig
+
+=> using SSH keys for remote logs, avoid putting username\password again & again.
+Git automatically sends a bit of code along with the request to authenticate the user.
+
+=> Exploring Git integrated development environments
+
+vim
+Emacs
+Textmate
+Eclipse
+Netbeans
+Visual Studio
+Intelli J
+RubyMine
+PHPStorm
+====================
+
+Git self hosting for secure environemnt.
+
+=> Gitosis => https://github.com/tv42/gitosis
 
 
 
