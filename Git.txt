@@ -1736,6 +1736,7 @@ Git pull is equal to git fetch+git merge.
 => Checking out remote branch................
 remote branches are exactly like regular branches with one exception, and that's that we can't check them out. That makes sense because Git stays in control of that remote branch so it can make sure it always stays in sync with what's in the remote repository. 
 
+Lets make a non tracking branch for master as origin/non-tracking.
 
 
 
